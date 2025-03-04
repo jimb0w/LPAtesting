@@ -9071,10 +9071,10 @@ local j = `j'+1
 }
 keep stat val
 rename val val`i'
-save tabres_`i'_`s'_`c', replace
+save SCEtabres_`i'_`s'_`c', replace
 }
-use tabres_0_`s'_`c', clear
-merge 1:1 _n using tabres_1_`s'_`c', nogen
+use SCEtabres_0_`s'_`c', clear
+merge 1:1 _n using SCEtabres_1_`s'_`c', nogen
 drop if inrange(_n,9,24)
 replace val0 = val0[9]+val0[10]+val0[11]+val0[12]+val0[13]+val0[14]+val0[15] if _n == 15
 replace val0 = val0[16]+val0[17] if _n == 17
@@ -15200,7 +15200,7 @@ set linesize 100
     \begin{flushright}
         \Huge
         \textbf{
-Lp(a) testing in European populations for the primary prevention of cardiovascular disease: a cost-effectiveness analysis
+Lp(a) testing for the primary prevention of cardiovascular disease in high-income countries: a cost-effectiveness analysis
 }
 \rule{16cm}{2mm} \\
 \Large
@@ -15357,11 +15357,15 @@ respectively \cite{LawBMJ2003}; smokers do not quit and non-smokers do not start
 HDL-C remains constant over the lifetime. 
 
 Notably, we imputed Lp(a) values for a subset of the sample with missing Lp(a) -- 
-the UK Biobank does not contain Lp(a) values for people with an Lp(a) of 189.1 nmol/L (88.5 mg/dL) and above (approximately
-7\% of the population), and we were unable to obtain the return 
-in which these have been calculated. 
-Nevertheless, we have previously shown this imputation is accurate and likely inconsequential \cite{MortonVIH2024}
-for the purposes of our modelling approach. 
+the UK Biobank original data extract does 
+not contain Lp(a) values for people with an Lp(a) of 189.1 nmol/L (88.5 mg/dL) and above (approximately
+7\% of the population), and the return 
+in which these have been calculated is not yet available on the current version
+of the UK Biobank analysis platform. 
+Nevertheless, we have previously shown 
+this imputation is accurate and inconsequential 
+for the purposes of our modelling approach \cite{MortonVIH2024}. 
+
 
 \subsection{Pharmacological interventions}
 
@@ -15448,7 +15452,8 @@ and the workforce non-participation for diabetes took age and sex specific value
 
 \subsection{Scenario analyses}
 
-We also conducted nine scenario analyses. In the first three, we varied
+We also conducted nine scenario analyses. In the first three,
+to test the impact of different Lp(a) thresholds, we varied
 the Lp(a) threshold at which treatment occurs from 192 nmol/L (90 mg/dL) to 105 nmol/L (50 mg/dL),
 149 nmol/L (70 mg/dL), and 236 nmol/L (110 mg/dL), respectively. 
 
@@ -15471,10 +15476,10 @@ for individuals receiving statins than not receiving statins.
 
 In the fifth scenario, we changed the threshold for initiating statins in the 
 population not recommended for ``very high risk'' treatment from 5.0 mmol/L
-to 3.0 mmol/L. 
+to 3.0 mmol/L, to assess the impact of this assumption our results. 
 In the sixth we changed the threshold for initiating blood pressure lowering in the 
 population not recommended for ``very high risk'' treatment from 160 mmHg
-to 140 mmHg. 
+to 140 mmHg, to assess the impact of this assumption our results. 
 
 In the seventh, we used a moderate intensity statin, rather than a high intensity statin. 
 In Australia, the most common moderate intensity statin was Rosuvastatin
@@ -15488,7 +15493,7 @@ reducing the cost from \$555 to \$340 \cite{PBSDOS23}. This scenario was only pe
 given that medication costs in the UK are already extremely low. 
 
 
-\section{Supplementary results}
+\section{Supplementary Results}
 
 In the worst case scenario in which statins 
 were assumed to causally increase the risk of type 2 diabetes, 
@@ -16917,7 +16922,7 @@ Mariko Harada-Shiba, MD, PhD,\footnote{Cardiovascular Center, Osaka Medical and 
 Marc Rijken,\textsuperscript{\ref{FHE}}
 Albert Wiegman, MD, PhD,\textsuperscript{\ref{FHE}}
 George Thanassoulis, MD, MSc, FRCPC,\footnote{MUHC Preventive and Genomic Cardiology, McGill University, Canada.}
-Pia R Kamstrup, MD PhD DMSc,\footnote{\label{CUH}Department of Clinical Biochemistry, Copenhagen University Hospital -- Herlev and Gentofte}\textsuperscript{,}\footnote{\label{UCD}Department of Clinical Medicine, University of Copenhagen, Denmark}
+Pia R Kamstrup, MD, PhD, DMSc,\footnote{\label{CUH}Department of Clinical Biochemistry, Copenhagen University Hospital -- Herlev and Gentofte}\textsuperscript{,}\footnote{\label{UCD}Department of Clinical Medicine, University of Copenhagen, Denmark}
 I{\~n}aki Guti{\'e}rrez Ibarluzea, PhD,\footnote{Ministry of Health, Basque Country, Spain.}
 Pablo Coral, MD,\footnote{FASTA University, Pharmacology Department, School of Medicine, Mar del Plata, Argentina.}
 Raul D Santos MD, PhD,\footnote{Academic Research Organization, Hospital Israelita Albert Einstein, Sao Paulo, Brazil.}\textsuperscript{,}\footnote{Lipid Clinic Heart Institute (InCor) University of Sao Paulo Medical School Hospital, Sao Paulo, Brazil.} 
@@ -16946,7 +16951,7 @@ Zanfina Ademi;
 
 \noindent
 Abstract word count: 250 \\
-Manuscript word count: 4,950 \\ 
+Manuscript word count: 4,911 \\ 
 Number of tables: 3 \\
 Number of Figures: 3 \\
 \end{titlepage}
@@ -16968,7 +16973,7 @@ selected randomly from the UK Biobank.
 The model evaluated Lp(a) testing in individuals
 not initially classified as high-risk based on age, 
 diabetes status, or the SCORE-2 algorithm.
-Those with an Lp(a) level $\geq$192 nmol/L (90 mg/dL) 
+Those with an Lp(a) level $\geq$192nmol/L (90mg/dL) 
 were treated as high risk (initiation of a statin plus
 blood pressure lowering). The Lp(a) testing intervention was compared to standard of care. 
 The primary analyses were conducted from the Australian and UK healthcare
@@ -17046,7 +17051,7 @@ adapting the results to other high-income countries in Europe and North America.
 
 All analysis syntax and a more detailed explanations of the methods are available in an online protocol 
 (available at: \color{blue}\href{https://github.com/jimb0w/LPAtesting}{https://github.com/jimb0w/LPAtesting}\color{black}). 
-All analyses were conducted in Stata, Version 17.0 (StataCorp, Texas, USA). 
+All analyses were conducted in Stata, Version 17.0 (StataCorp, Texas, USA).
 We have completed this study in accordance with the CHEERS checklist (Appendix).
 
 \subsection*{Model overview}
@@ -17122,16 +17127,8 @@ Data on risk factor trajectories were also mostly informed by data from the UK B
 but also necessitate several assumptions, which we drew from published literature. 
 These assumptions and how the effect of risk factors on the incidence of 
 outcomes was incorporated is explained in the Supplementary Methods.
-
-Notably, we imputed Lp(a) values for a subset of the sample with missing Lp(a) -- 
-the UK Biobank original data extract does 
-not contain Lp(a) values for people with an Lp(a) of 189.1 nmol/L (88.5 mg/dL) and above (approximately
-7\% of the population), and the return 
-in which these have been calculated is not yet available on the current version
-of the UK Biobank analysis platform. 
-Nevertheless, we have previously shown 
-this imputation is accurate and inconsequential 
-for the purposes of our modelling approach \cite{MortonVIH2024}. 
+A description of Lp(a) measurement and handling of missing Lp(a) data is provided
+in the Supplementary Methods. 
 
 \subsection*{Population, intervention, and control}
 
@@ -17151,7 +17148,7 @@ recruitment population).
 
 We populated our model with 10,000 randomly selected individuals from the UK Biobank 
 study who were aged between 40 and 69, without prior CVD,
-who had information on their LDL-C, Lp(a) (measured or imputed), 
+who had information on their LDL-C, Lp(a), 
 SBP, and high-density lipoprotein-cholesterol.
 
 The standard of care (control) scenario was based on the European guidelines for 
@@ -17245,8 +17242,9 @@ defined as the incremental healthcare costs divided by the incremental QALYs
 comparing the Lp(a) testing intervention to standard of care. 
 
 In the primary analysis, all health economic outcomes underwent discounting at 5\% in Australia and
-3.5\% in the UK (per their respective guidelines \cite{PBACG,NICEHTA2013}), and results were compared to their
-respective willingness-to-pay thresholds of \$28,000 per QALY gained in Australia \cite{EdneyPHEC2018}
+3.5\% in the UK (per their respective guidelines \cite{PBACG,NICEHTA2013}), and results were compared to the
+countries respective willingness-to-pay thresholds (as defined
+in guidelines) of \$28,000 per QALY gained in Australia \cite{EdneyPHEC2018}
 and \textsterling 20,000 to \textsterling 30,000 per QALY in the UK \cite{NICEHTA2013}.
 If ICERs were below these values but still produced costs, 
 results were considered cost-effective; if incremental costs were negative,
@@ -17326,7 +17324,7 @@ and cost saving in both countries from the societal perspective.
 Age and sex stratified results are shown in Supplementary Tables~\ref{BCDtaba1a}-\ref{BCDtaba5u}.
 From the healthcare perspective, Lp(a) testing was cost-effective in females and males 
 in Australia (ICERs: \$27,035 and \$3,842 per QALY gained, respectively) and cost saving in the UK.
-From the societal perspecitve, Lp(a) testing was cost-saving for females and males
+From the societal perspective, Lp(a) testing was cost-saving for females and males
 in Australia and the UK. 
 
 
@@ -17355,7 +17353,7 @@ was 97\% and 2\% in Australia and 100\% and 81\% in the UK, respectively;
 corresponding probabilities from the societal perspective were
 99\% and 82\% in Australia and 100\% and 98\% in the UK. 
 
-The results of the scenario analyses are shown in Supplementary Tables~\ref{BCDtabsce1a}-\ref{BCDtabsce7u}.
+The results of the scenario analyses are shown in Supplementary Tables~\ref{BCDtabsce1a}-\ref{BCDtabsce8u}.
 While the number of MIs and strokes prevented by risk reclassification 
 increased with a decreasing threshold,
 conclusions about ICERs and societal ICERs were unaffected by the Lp(a) threshold used for Australia
@@ -17389,7 +17387,8 @@ a mainstay of CVD prevention, these medications come at a cost and have side eff
 a key issue has become effectively selecting people who will benefit from pharmacological treatments
 to control risk factors when there is not an overt clinical need for the therapies, as in the primary
 prevention population without markedly elevated LDL-C or SBP \cite{VisserenEHJ2021}.
-Lp(a), as an important risk factor in a nontrivial minority ($\sim$5-10\%) of the population, has the potential
+Lp(a), as an important risk factor in a nontrivial minority ($\sim$5-10\% have concentrations
+above 192 nmol/L (90 mg/dL)) of the population, has the potential
 to be an important and cost-effective risk stratifier to address this critical clinical need, as shown by our findings.
 
 However, despite calls from worldwide guidelines and society consensus 
@@ -17400,7 +17399,8 @@ Lp(a) should not be measured when no medication to lower Lp(a) is available,
 as reflected by a statement in the European guidelines for the prevention of CVD
 that ``Lipoprotein(a) ... provides limited additional value 
 in terms of reclassification potential'' \cite{VisserenEHJ2021}.
-This misjudgement has been rejected by numerous scientific statements \cite{KronEHJ2022,NordLancet2024}
+This misjudgement has been rejected by numerous scientific statements \cite{KronEHJ2022,NordLancet2024,KosJCL2024}
+and guidelines \cite{ESCDyslGuid2020,Candaguidelines2021}
 that recommend that other treatable risk factors should be treated more intensely
 in people with elevated Lp(a). Our results support this notion and it is essential
 the guidelines be updated to 
@@ -17409,14 +17409,14 @@ reflect the most up-to-date healthcare recommendations.
 The other reason Lp(a) has not been routinely measured in clinical practice in most countries may 
 in part be due to the fact that the effectiveness and cost-effectiveness of Lp(a) testing had not yet 
 been established -- no other published study to date has investigated the cost-effectiveness of testing for Lp(a),
-with the exception of an unpublished abstract that indicated that Lp(a) testing was cost-effective
+with the exception of an abstract that indicated that Lp(a) testing was cost-effective
 \cite{LPAABSTRACT}. Our work showing that Lp(a) testing is clinically warranted and cost-effective
 is therefore a critical addition to the growing body of evidence
 supporting the implementation of Lp(a) testing in clinical practice, even without a
 registered medication for Lp(a)-lowering itself.
 
 In the cost adaptation analysis we demonstrated that population-based Lp(a) testing has 
-the potential to be a cost-effective  strategy in various healthcare systems. 
+the potential to be a cost-saving strategy in various healthcare systems. 
 Specifically, the approach could be viable in countries such as Austria, Canada, France, Germany, 
 Italy, Slovenia, Spain, the Netherlands, Poland and the US, based on their willingness-to-pay thresholds \cite{PRLGH2023}. 
 However, the calculated ICERs should be viewed as approximate estimates rather than precise country-specific outcomes, 
@@ -17521,13 +17521,16 @@ or a disutility associated with pill taking as it is insignificant \cite{HutchBM
 Lp(a) testing to reclassify CVD risk in the primary prevention population aged between 40 and 69 years
 is a highly cost-effective way to prevent CVD. Implementation of Lp(a) testing 
 is not only highly warranted from a clinical perspective, but is likely to come
-with a financial return on investment within a relatively short time when considered
+with a financial return on investment when considered
 from the societal perspective. Our results support the immediate implementation
-of Lp(a) testing in primary prevention populations high income countries. 
+of Lp(a) testing in primary prevention populations of high-income countries. 
 
 
 \clearpage
 \section*{Acknowledgements}
+
+The authors would like to acknowledge Sheridan Rodda (Monash University) for designing
+the graphical abstract. 
 
 This research has been conducted using the UK Biobank Resource under 
 Application Number 88775. This study used linked data from 
@@ -17676,12 +17679,16 @@ Full results are shown Supplementary Tables ~\ref{BCDtabfa} and ~\ref{BCDtabfu}.
     ]{CSV/BCrestabsumpaper.csv}
   \end{center}
 The willingness-to-pay threshold was \$28,000 per QALY gained in Australia \cite{EdneyPHEC2018}
-and \textsterling 20,000 to \textsterling 30,000 per QALY in the UK \cite{NICEHTA2013}. \\
+and \textsterling 20,000 to \textsterling 30,000 per QALY in the UK \cite{NICEHTA2013}. 
+If ICERs were below these values but still produced costs, 
+results were considered cost-effective; if incremental costs were negative,
+the interventions were considered cost-saving.  \\
 \noindent Abbreviations: 
 MI -- Myocardial infarction;
 YLL -- Years of life lived;
 QALY -- Quality-adjusted life years;
-ICER -- Incremental cost-effectiveness ratio;
+ICER -- Incremental cost-effectiveness ratio (defined as the incremental costs 
+divided by the incremental QALYs for the intervention compared to control);
 SICER -- Incremental cost-effectiveness ratio (societal perspective).
 \end{table}
 \clearpage
@@ -17746,9 +17753,25 @@ GPH/PSA_2.gph ///
 GPH/PSAS_1.gph ///
 GPH/PSAS_2.gph ///
 , graphregion(color(white)) cols(2) xsize(5) altshrink
-texdoc graph, label(PSAfig) figure(h!) fontface("Liberation Sans") ///
-caption(Results of the probabilistic sensitivity analysis for Lp(a) testing (intervention) compared to standard of care (control) ///
-in a common cost-effectiveness plane for each country.)
+texdoc graph, label(PSAfig) figure(h!) cabove fontface("Liberation Sans") ///
+caption(Results of the probabilistic sensitivity analysis for Lp(a) ///
+testing (intervention) compared to standard of care (control) ///
+in a common cost-effectiveness plane for each country. ///
+The cost-effectiveness plane shows incremental quality adjusted life years (QALYs) for ///
+the intervention compared to the control along the x axis, and incremental costs along ///
+the y axis. Each dot represents a single simulation ///
+in which the input parameters were varied probabilistically to provide an estimate ///
+of the overall uncertainty of the results. The diagonal lines represent the willingness-to-pay ///
+thresholds for each country The willingness-to-pay threshold was \\$28,000 per QALY gained in Australia \cite{EdneyPHEC2018} ///
+and \textsterling 20,000 in the UK \cite{NICEHTA2013}. ///
+Each dot in the plot represents an incremental cost-effectiveness ratio (defined as incremental ///
+costs divided by incremental QALYs). ///
+If an ICER (i.e., a single dot in the plot) was below the willingness-to-pay threshold ///
+(i.e., to the right of the line) but still produced costs ///
+(i.e., in the top right quadrant of the plane), ///
+results were considered cost-effective; if incremental costs ///
+were negative (i.e., the bottom right quadrant of the plane), ///
+the interventions were considered cost-saving.)
 texdoc stlog close
 
 
